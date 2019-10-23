@@ -5,15 +5,20 @@
     <meta name="viewport" content="width=device-width">
     <title>Creatives</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="media.css">
     <script src="https://api-maps.yandex.ru/2.1/?apikey=<ваш API-ключ>&lang=ru_RU" type="text/javascript"></script>
     <link rel="stylesheet" href="css/animate.css">
     <script src="dist/wow.min.js"></script>
     <script>
-        new WOW().init();
+        wow = new WOW({
+                mobile: false
+            });
+        wow.init();
     </script>
 </head>
 <body>
 <header class="header">
+
     <div class="wrapper">
         <img src="img/logo.png" alt="" class="logo">
         <nav class="header-nav__wrapper">
@@ -25,11 +30,10 @@
             <a href="#" class="header-nav__item">Contact us</a>
 
         </nav>
-        <div class="header__social social">
-            <a href="" class="social__item"></a>
-            <a href="" class="social__item"></a>
-            <a href="" class="social__item"></a>
-            <a href="" class="social__item"></a>
+        <div class="menu-icon__wrapper">
+            <span class="menu-icon__elem menu-icon__elem-1"></span>
+            <span class="menu-icon__elem menu-icon__elem-2"></span>
+            <span class="menu-icon__elem menu-icon__elem-3"></span>
         </div>
     </div>
 </header>
@@ -72,6 +76,8 @@
     </section>
     <section class="news">
             <div class="news__wrapper news-top__wrapper">
+                <img src="img/news1.jpg" alt="" class="news__img wow bounceInRight">
+
                 <article class="news-block wow bounceInLeft">
                     <div class="news-block__wrapper-top news-block__wrapper">
                         <div class="news__time time">
@@ -82,7 +88,6 @@
                         <p class="news__text text news__text2">Donec ullamcorper nulla non metus auctor fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur </p>
                     </div>
                 </article>
-                <img src="img/news1.jpg" alt="" class="news__img wow bounceInRight">
              </div>
             <div class="news__wrapper news-bottom__wrapper">
                 <img src="img/news1.jpg" alt="" class="news__img wow bounceInLeft">
@@ -96,6 +101,7 @@
                         <p class="news__text text news__text2">Donec ullamcorper nulla non metus auctor fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur </p>
                     </div>
             </article>
+            </div>
     </section>
     <section class="blog">
         <div class="wrapper">
@@ -203,8 +209,8 @@
 </main>
 <footer class="footer">
     <div class="wrapper">
-        <p class="footer__text-right">© 2016 PSDfreebies.com – All Right Reserved</p>
-        <p class="footer__text-left">Design by: <img src="img/bee.png" alt="" class="footer__icon"> PSDfreebies.com</p>
+        <p class="footer__text footer__text-right">© 2016 PSDfreebies.com – All Right Reserved</p>
+        <p class="footer__text footer__text-left">Design by: <img src="img/bee.png" alt="" class="footer__icon"> PSDfreebies.com</p>
     </div>
 </footer>
 
@@ -225,7 +231,14 @@
         });
         myMap.geoObjects.add(myPlacemark1);
     }
+    document.querySelector('.menu-icon__wrapper').onclick = function () {
+        document.querySelector('.header-nav__wrapper').classList.toggle('show');
+        document.querySelector('.menu-icon__wrapper').classList.toggle('menu-icon__wrapper-close');
 
+        for (let i = 0; i < document.querySelector('.menu-icon__wrapper').children.length; i++){
+            document.querySelectorAll('.menu-icon__elem')[i].classList.toggle('close');
+        }
+    };
 </script>
 </body>
 </html>
